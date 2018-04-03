@@ -1,0 +1,321 @@
+*{
+	margin: 0;
+	padding: 0;
+	user-select: none;
+}
+#tips{
+	position: absolute;
+	width: 360px;
+	height: 150px;
+	padding: 10px;
+	top: 440px;
+	right: 70px;
+	background: #797A77;
+	color: #ccc;
+	font-size: 14px;
+}
+#container::-webkit-scrollbar {display:none}
+#container{
+	width: 375px;
+	height: 600px;
+	margin: 10px auto;
+	border: 1px solid #eee;
+	box-shadow: 1px 1px 14px 2px #eee;
+	background: url(../imgs/bg.jpeg) no-repeat;
+	background-size: 375px 600px;
+	overflow-y: scroll;
+	cursor: pointer;
+	position: relative;
+}
+#layer{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	z-index: 10;
+	background: #333;
+}
+#layer input{
+	display: block;
+	padding-left: 10px;
+	margin-top: 200px;
+	margin-left: 85px;
+	width: 200px;
+	height: 50px;
+	border: none;
+	outline: none;
+	border-radius: 5px;
+}
+#layer button{
+	width: 210px;
+	height: 40px;
+	background: #FF6B37;
+	border: none;
+	color: #fff;
+	border-radius: 5px;
+	margin-left: 85px;
+	margin-top: 10px;
+	cursor: pointer;
+	outline: none;
+}
+#layer button:hover{
+	background: #E66031;
+}
+#container .topbar{
+	width: 100%;
+	height: 50px;
+	background: #293271;
+}
+#container .topbar .search{
+	background: url(../imgs/search.png) no-repeat;
+	float: right;
+}
+#container .topbar .settings{
+	background: url(../imgs/settings.png) no-repeat;
+	float: left;
+}
+#container .topbar .search,#container .topbar .settings{
+	width: 50px;
+	height: 50px;
+	background-size: 20px 20px;
+	background-position: center;
+}
+#container .topbar .location{
+	float: left;
+	height: 50px;
+	margin-left: 96px;
+	text-align: center;
+}
+#container .topbar .settings:hover{
+	background-color: #000;
+}
+#container .topbar .search:hover{
+	background-color: #000;
+}
+#area{
+	padding-top: 8px;
+	font-size: 16px;
+	color: #fff;
+}
+.location p{
+	font-size: 12px;
+	color: #ccc;
+}
+
+#container .tempShow{
+	width: 95%;
+	height: 300px;
+	margin: 0 10px;
+	padding-top: 50px;
+	position: relative;
+	border-bottom: 1px solid #eee;
+}
+#tempcircle{
+	margin-left: 100px;
+}
+#temp{
+	position: absolute;
+	top: 105px;
+	left: 155px;
+	font-size: 38px;
+	color: #fff;
+}
+#container .tempShow img{
+	width: 80px;
+	height: 80px;
+	margin-top: -10px;
+	margin-left: 140px;
+}
+.tempdesc{
+	width: 100%;
+	text-align: center;
+	margin-top: -10px;
+	color: #fff;
+	font-size: 14px;
+}
+#container .forecast{
+	width: 95%;
+	height: 180px;
+	margin: 10px 10px;
+	overflow: hidden;
+}
+.title{
+	color: #333;
+	font-size: 14px;
+	padding-bottom: 5px;
+}
+#container .forecast div{
+	width: 24.6%;
+	height: 90px;
+	float: left;
+	border-right: 1px solid #eee;
+}
+.forecast img{
+	width: 50px;
+	height: 50px;
+}
+#first, #second, #third, #fourth{
+	padding-top: 10px;
+	color: #fff;
+	text-align: center;
+}
+#container .forecast #fourth{
+	border: none;
+}
+#first p,#second p,#third p,#fourth p{
+	padding-bottom: 10px;
+	font-size: 14px;
+}
+
+.airquality{
+	height: 180px;
+	margin: 0 10px;
+	border-top: 1px solid #eee;
+	position: relative;
+}
+.airquality .title{
+	padding: 10px 0;
+}
+.airquality .level{
+	position: absolute;
+	left: 53px;
+	top: 85px;
+	font-size: 18px;
+	color: #fff;
+	font-weight: 700;
+}
+#aircircle{
+	float: left;
+	margin-left: 20px;
+	margin-top: 10px;
+}
+.pollutants{
+	margin-left: 50px;
+	float: left;
+	color: #fff;
+	width: 150px;
+	font-size: 14px;
+}
+.pollutants p:first-child{
+	padding-left: 50px;
+}
+.pollutants p span{
+	float: right;
+}
+.windpower{
+	height: 180px;
+	margin: 0 10px;
+	border-top: 1px solid #eee;
+	background: url(../imgs/wind.png) no-repeat;
+	background-position: 30px center;
+	background-size: 100px;
+}
+.windpower .title{
+	padding: 10px 0;
+}
+.windpower .wd{
+	border-bottom: 1px solid #eee;
+	margin-top: 50px;
+}
+.windpower .wp,.windpower .wd{
+	font-size: 14px;
+	color: #fff;
+	margin-left: 180px;
+}
+.windpower span{
+	float: right;
+}
+#search{
+	position: absolute;
+	top: 55px;
+	left: 80px;
+	width: 300px;
+	height: 50px;
+	display: none;
+}
+#search input{
+	height: 30px;
+	padding-left: 5px;
+	border: 1px solid #eee;
+	outline: none;
+}
+#search button{
+	width: 50px;
+	text-align: center;
+	height: 31px;
+	line-height: 30px;
+	border: none;
+	cursor: pointer;
+	background: orange;
+	color: #fff;
+}
+
+#setting{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background: #eee;
+	top: 0;
+	left: -380px;
+	color: #fff;
+	background: url(../imgs/bg.jpeg) no-repeat;
+	background-size: 375px 600px;
+	text-align: center;
+}
+#setting>p{
+	width: 90%;
+	margin: 0 20px;
+	padding-top: 10px;
+	border-bottom: 1px solid #ccc;
+}
+#setting ul{
+	width: 90%;
+	margin: 10px auto;
+	list-style: none;
+	clear: right;
+}
+#setting ul li{
+	border-top: 1px solid #ccc;
+	height: 50px;
+	font-size: 18px;
+	line-height: 50px;
+	text-align: left;
+}
+#setting ul li#locate{
+	border-top: none;
+	width: 310px;
+	padding-left: 30px;
+	background: url(../imgs/local.png) no-repeat;
+	background-size: 20px;
+	background-position: left center;
+}
+#setting ul li#locate:hover{
+	background-color: #2F3A82;
+}
+.plus{
+	width: 50%;
+	float: left;
+	margin-top: 30px;
+}
+.plus span{
+	display: inline-block;
+	font-size: 30px;
+	padding-top: 4px;
+}
+.plus p{
+	font-size: 14px;
+	padding-left: -15px;
+}
+#setting .circle{
+	border: 1px solid #ccc;
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	margin-left: 65px;
+}
+#setting .circle:hover{
+	background: #DCACD2;
+}
+#center{
+	width: 100%;
+	height: 200px;
+}
