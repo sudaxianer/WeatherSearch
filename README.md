@@ -6,3 +6,5 @@
 <p>4.注：搜索时请输入正确的城市名，如：北京市</p>
 
 <p>注：这个项目主要目的是了解jsonp如何实现跨域请求以及更多第三方API的使用</p>
+# 预览地址
+http://htmlpreview.github.io/?https://sudaxianer.github.io/WeatherSearch/main.html
