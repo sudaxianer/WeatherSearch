@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0,minimum=1.0,user-scalable=no">
+	<meta name="format-detection" content="telephone=no, email=no">
+	<title>天气应用</title>
+	<link charset="utf-8" rel="stylesheet" type="text/css" href="css/reset.css">
+	<link charset="utf-8" rel="stylesheet" type="text/css" href="css/index.css">
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="http://webapi.amap.com/maps?v=1.4.5&key=ddf4e80dc7363ad65c9fad7dea97a8e0&plugin=AMap.CitySearch"></script>
+	<script type="text/javascript" src="js/circle-progress.min.js"></script>
+	<script type="text/javascript" src="js/index.js"></script>
+	<!--[if lt IE 9]>
+    	<script src="http://cdn.static.runoob.com/libs/html5shiv/3.7/html5shiv.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+	<!-- HEADER -->
+	<header class="header">
+		<div class="con">
+			<h1 class="logo"><a href="index.html">CityWeather</a></h1>
+			<div class="search" id="search"><img src="imgs/search.png"><i></i></div>
+			<div class="searchinput" id="searchinput"><input type="text" placeholder="请输入你想查询的城市"></div>
+			<nav class="nav">
+				<ul class="clear">
+					<li><a href="index.html">首页<i></i></a></li>
+					<li><a href="javascript:;" id="help">帮助<i></i></a></li>
+					<li><a href="javascript:;">我的城市<i></i></a></li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+	<div class="headerBg"></div> <!-- header半透明背景 -->
+
+	<!-- BANNER -->
+	<section class="banner clear">
+		<!-- 主面板 -->
+		<article class="area">
+			<!-- 上 -->
+			<figure class="toparea">
+				<div class="bg">
+					<img src="imgs/qing.png"/ id="titleimg">
+					<h2 id="cityname">北京市</h2>
+					<p><span id="nowtime">2018-04-11</span> | <span id="titleweekday">星期三</span> | <span id="titleweath">晴</span></p>
+				</div>
+				<div class="areaBg"></div>
+			</figure>
+			<!-- 左 -->
+			<figure class="bottomarea-left">
+				<div class="bg">
+					<h2>今日温度</h2>
+					<span id="temp">13°</span>
+					<div id="tempcircle"></div>
+				</div>
+				<div class="areaBg"></div>
+			</figure>
+			<!-- 右 -->
+			<figure class="bottomarea-right">
+				<div class="bg">
+					<h2>未来三天</h2>
+					<div class="forecast">
+						<div id="first" class="forecastModal">
+							<img src="imgs/yin.png"/>
+							<p class="weath"></p>
+							<p class="temprange"></p>
+							<p>今日</p>
+						</div>
+						<div id="second" class="forecastModal">
+							<img src="imgs/yin.png"/>
+							<p class="weath"></p>
+							<p class="temprange"></p>
+							<p id="weekday"></p>
+						</div>
+						<div id="third" class="forecastModal">
+							<img src="imgs/yin.png"/>
+							<p class="weath"></p>
+							<p class="temprange"></p>
+							<p id="weekday"></p>
+						</div>
+						<div id="fourth" class="forecastModal">
+							<img src="imgs/yin.png"/>
+							<p class="weath"></p>
+							<p class="temprange"></p>
+							<p id="weekday"></p>
+						</div>
+					</div>
+				</div>
+				<div class="areaBg"></div>
+			</figure>
+		</article> 
+	</section>
+
+	<!-- 其余天气信息 -->
+	<section class="remaining clear">
+		<article class="info windpower">
+			<img src="imgs/windpower.gif" />
+			<div>
+				<h2>风向风力</h2>
+				<p><span>风向</span><b id="winddir">东南</b></p>
+				<p><span>风力</span><b id="daypower">3级</b></p>
+			</div>
+		</article>
+		<article class="info aircondition">
+			<img src="imgs/air.png" />
+			<div>
+				<h2>空气质量</h2>
+				<p><span>PM10</span><b>67</b></p>
+				<p><span>PM2.5</span><b>75</b></p>
+				<p><span>CO</span><b>45</b></p>
+				<p><span>NO<sub>2</sub></span><b>20</b></p>
+				<p><span>SO<sub>2</sub></span><b>14</b></p>
+			</div>
+		</article>
+	</section>
+	<!-- 消息推送 -->
+	<!-- <section class="push clear" style="height: 200px;">
+	</section> -->
+	
+	<!-- FOOTER -->
+	<footer>
+		<span>前端练习, 欢迎指正, Email: 18810553800@163.com,  By — SuZhen</span>
+	</footer>
+</body>
+</html>

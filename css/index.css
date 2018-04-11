@@ -1,0 +1,348 @@
+@charset "utf-8";
+html,body {
+	width: 100%;
+	overflow-x: hidden; 
+}
+a {
+	color: #000;
+}
+a:hover, a:active {
+	color: #000;
+}
+.con {
+	margin: 0 auto;
+	width: 70.3%;
+	overflow: hidden;
+	zoom: 1;
+}
+/*-- HEADER --*/
+.header, .headerBg {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 10;
+	width: 100%;
+	height: 89px;
+	overflow: hidden;
+}
+.headerBg {
+	z-index: 9;
+	opacity: 0.1;
+	filter: alpha(opacity=10);
+	background-color: #000;
+}
+.header .logo {
+	float: left;
+	margin-top: 19px;
+	width: 190px;
+	height: 51px;
+	color: #fff;
+	font-size: 18px;
+	background: url(../imgs/logo.png) no-repeat;
+	background-size: 70px 72px;
+	background-position: 10px;
+	cursor: pointer;
+}
+.header .logo a {
+	margin-left: 75px;
+	line-height: 51px;
+	color: #fff;
+}
+.header .search {
+	float: right;
+	position: relative;
+	width: 80px;
+	height: 89px;
+	cursor: pointer;
+}
+.searchinput{
+	display: none;
+	float: right;
+}
+.searchinput input{
+	margin-top: 25px; 
+	padding-left: 5px;
+	width: 150px;
+	height: 40px;
+	border: none;
+}
+.header .search img {
+	width: 30px;
+	height: 31px;
+	margin-left: 25px;
+	margin-top: 29px
+}
+.header .nav {
+	float: right;
+}
+.header .nav li {
+	float: left;
+	position: relative;
+}
+.header .nav li a {
+	padding: 0 30px;
+	height: 89px;
+	line-height: 89px;
+	color: #f4f4f4;
+	font-size: 18px;
+}
+.header .nav li.bg a {
+	color: #fff;
+}
+.header .nav li a i, .header .search i{
+	position: absolute;
+	top: 0;
+	left: 50%;  /*从中间两两边展开*/
+	z-index: -1;
+	margin-left: 0%;
+	width: 0%;
+	height: 89px;
+	background-color: #000;
+	opacity: 0.1;
+	filter: alpha(opacity=10);
+}
+.header .nav li a:hover i, .header .search:hover i{
+	/*过渡动画*/
+	-webkit-transition: all 0.2s linear 0s;
+	-moz-transition: all 0.2s linear 0s;
+	-ms-transition: all 0.2s linear 0s;
+	-o-transition: all 0.2s linear 0s;
+	transition: all 0.2s linear 0s;
+	cursor: pointer;
+	margin-left: -50%;
+	width: 100%;
+}
+/*-- BANNER --*/
+.banner {
+	background-color: #ff6900;
+}
+.banner .area {
+	margin: 0 auto;
+	padding-top: 89px;
+	width: 70.3%;
+}
+/*透明背景*/
+.bg {
+	position: relative;
+	z-index: 10;
+	width: 100%;
+	height: 100%;
+}
+.areaBg {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 9;
+	width: 100%;
+	height: 100%;
+	opacity: 0.1;
+	filter: alpha(opacity=10);
+	background-color: #000;
+}
+/*上部*/
+.banner .area .toparea {
+	position: relative;
+	margin-top: 20px;
+	width: 100%;
+	height: 100px;
+}
+.area h2{
+	padding-left: 10px;
+	padding-top: 10px;
+	font-size: 18px;
+	font-weight: normal;
+	color: #fff;
+}
+.area .toparea h2 {
+	padding-top: 25px;
+	font-weight: 600;
+}
+.area .toparea p{
+	padding-top: 10px;
+	font-size: 16px;
+	color: #fff;
+}
+.area .toparea img{
+	margin: 10px; 
+	width: 90px;
+	height: 80px;
+	float: left;
+}
+/*左部*/
+.area .bottomarea-left h2{
+	font-size: 16px;
+}
+.banner .area .bottomarea-left {
+	float: left;
+	position: relative;
+	margin-top: 10px;
+	width: 40%;
+	height: 250px;
+}
+.bottomarea-left span {
+	font-size: 30px;
+	color: #fff;
+}
+#tempcircle, .bottomarea-left span{
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+}
+/*右部*/
+.banner .area .bottomarea-right {
+	float: left;
+	position: relative;
+	margin: 10px 0 20px 10px;
+	width: calc(60% - 10px);
+	height: 250px;
+}
+.area .bottomarea-right h2 {
+	border-bottom: 12px solid rgba(0,0,0,0);
+	font-size: 16px;
+}
+/*右部-未来三天*/
+.forecastModal {
+	float: left;
+	width: 25%;
+	color: #fff;
+	text-align: center;
+	cursor: pointer;
+}
+.forecastModal:hover {
+	background: #C85402;
+}
+.forecastModal img{
+	padding: 10px;
+	width: 60px;
+	height: 60px;
+}
+.forecastModal p{
+	height: 41px;
+	font-size: 14px;
+}
+
+/*-- 其余天气信息 --*/
+.remaining {
+	width: 100%;
+}
+.remaining .info {
+	margin: 0 auto;
+	width: 70.3%;
+	height: 200px;
+	border-bottom: 1px solid #ccc;
+}
+.info img {
+	float: left;
+	margin-left: 25px;
+	margin-top: 25px;
+	width: 200px;
+	height: 150px; 
+}
+.info div {
+	margin-left: 250px;
+	height: 100%;
+}
+.info h2{
+	padding-top: 20px;
+	padding-bottom: 20px;
+	font-size: 16px;
+	font-weight: normal;
+	color: #FF6900;
+}
+.info p{
+	margin-left: 54%;
+	padding-left: 5px;
+	width: 45%;
+	height: 50px;
+	line-height: 50px;
+	font-size: 16px;
+}
+.info p:nth-child(odd) {
+	background: #eee;
+}
+.info p span{
+	float: left;
+	color: #333;
+}
+.info p b{
+	float: right;
+	padding-right: 10px;
+	font-size: 20px;
+}
+.remaining .aircondition {
+	height: 350px;
+}
+/*页脚*/
+footer{
+	width: 100%;
+	height: 100px;
+	text-align: center;
+	background: #FF6900;
+}
+footer span{
+	line-height: 100px;
+	color: #eee;
+}
+
+
+/*响应式*/
+@media all and (max-width: 769px) {
+	.con {
+		width: 100%;
+	}
+	.header, .headerBg {
+		height: 46px;
+	}
+	.header .logo {
+		margin-top: 9px;
+		margin-left: 10px;
+		height: 28px;
+		font-size: 18px;
+		background: none;
+	}
+	.header .logo a {
+		margin-left: 0;
+		line-height: 28px;
+	}
+	.header .nav {
+		display: none;
+	}
+	.header .search {
+		height: 46px;
+		width: 40px;
+	}
+	.searchinput input{
+		height: 20px;
+		margin-top: 13px; 
+	}
+	.header .search img {
+		width: 20px;
+		height: 20px;
+		margin-top: 13px;
+		margin-left: 10px;
+	}
+	.banner .area {
+		width: 90%;
+	}
+	.banner .area {
+		padding-top: 46px;
+	}
+	/*左部*/
+	.banner .area .bottomarea-left {
+		width: 100%;
+	}
+	/*右部*/
+	.banner .area .bottomarea-right {
+		width: 100%;
+		margin-left: 0;
+	}
+	/*info*/
+	.remaining .info {
+		width: 100%;
+	}
+	.info p{
+		margin-left: 0;
+		width: 100%;
+	}
+}
