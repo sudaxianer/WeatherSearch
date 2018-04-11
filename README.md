@@ -13,4 +13,4 @@
 
 <p>使用方法：直接点击下方demo预览地址，或下载源文件,运行index.html</p>
 # demo预览地址
-http://htmlpreview.github.io/?https://sudaxianer.github.io/WeatherSearch/main.html
+http://htmlpreview.github.io/?https://sudaxianer.github.io/WeatherSearch/index.html
