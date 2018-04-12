@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>注册</title>
+    <script src="../js/jquery.min.js"></script>
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../css/form.css">
+</head>
+<body>
+    <!-- 注册面板 -->
+    <div id="loginbox">
+        <form class="form-signin">       
+            <h2 class="form-signin-heading">注册 FireWeather</h2>
+            <!-- 用户名 -->
+            <span class="tips1" id="nameErr"></span>
+            <input type="text" class="form-control" id="userName" onBlur="checkUserName()" placeholder="用户名由4-16位数字、字母、下划线组成" />
+            <!-- 密码与确认密码 -->
+            <span class="tips2" id="passwordErr"></span>
+            <input type="password" class="form-control input1" id="userPasword" onBlur="checkPassword()" placeholder="密码由4-16位数字组成" />  
+            <input type="password" class="form-control input2" id="userConfirmPasword" onBlur="confirmPassword()" placeholder="请再次确认密码" />
+            <!-- 手机号码 -->
+            <span class="tips3" id="phoneErr"></span>
+            <input type="tel" class="form-control" id="userPhone" onBlur="checkPhone()" placeholder="请输入11位手机号码" />   
+            <!-- 记住我  -->
+            <label class="checkbox">
+                <input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe">记住我
+                <span class="tips4"><!-- （账号信息暂存在cookie中） --></span>
+            </label>
+            <!-- 注册按钮 -->
+            <button class="btn btn-lg btn-primary btn-block" type="submit" id="loginbtn"><a href="../index.html">注 册</a></button>  
+            <!-- 跳转登录页  -->
+            <p><a href="login.html">已有账号，点击此处登录</a></p>
+        </form>
+    </div>
+    <script type="text/javascript" src="../js/form.js"></script>
+</body>
+</html>
