@@ -18,6 +18,12 @@
 <p>1.2同步校验：文本框blur事件，校验数据格式</p>
 <p>1.3对提交按钮进行补充校验</p>
 
-<p>使用方法：直接点击下方demo预览地址，或下载源文件,运行index.html</p>
+<b>v1.2.1</b>
+<p>1.用nodejs、ajax、json请求，模拟注册提交时前端与后端的数据交互</p>
+<p>1.1利用json模拟数据库，接口包括：获取用户信息，和增加用户信息</p>
+<P>1.2通过ajax请求后端数据库的数据</p>
+<p>1.3下次迭代目标：完整实现注册页和登录页面的异步校验</p>
+
+<p>使用方法：直接点击下方demo预览地址，或下载源文件,前端运行index.html; 后端改下IP地址，运行node server.js</p>
 # demo预览地址
 http://htmlpreview.github.io/?https://sudaxianer.github.io/WeatherSearch/index.html
