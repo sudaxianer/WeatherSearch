@@ -9,7 +9,38 @@ aBtn.onclick = function(e) {
 		warning(confirmPassword, "userConfirmPasword");
 		warning(checkPhone, "userPhone");
 		return;
+	} else {
+		// 存储数据
+		var userObj = {};
+		var userName = document.getElementById('userName');
+		var userPasword = document.getElementById('userPasword');
+		var userTel = document.getElementById('userPhone'); 
+		userObj["userName"] = userName.value;
+		userObj["userPasword"] = userPasword.value;
+		userObj["userTel"] = userTel.value;
+		var jsonData = JSON.stringify(userObj);
+		// 提交用户信息
+		submitData(jsonData);
 	}
+	window.setTimeout(function(){
+		window.location.href = "../index.html";
+	},1000);
+}
+
+// 提交后台
+function submitData(jsonData) {
+	// jsonp跨域提交数据
+	$.ajax({
+	    type: 'get',
+	    async: true,
+	    url: 'http://10.14.15.41:8080/addInfo',
+	    data: jsonData,
+	    dataType: 'jsonp',
+	    jsonp: 'callback',
+	    success: function(data){
+	        console.log("注册成功！");
+	    }
+	});
 }
 
 // 点击注册按钮显示红色警示框
@@ -47,7 +78,7 @@ function checkForm() {
 function checkUserName() { 
 	var username = document.getElementById('userName'); 
 	var errname = document.getElementById('nameErr'); 
-	var pattern = /^\w{4,16}$/;  //数字、字母、下划线四到十六位 
+	var pattern = /^([\u4e00-\u9fa5]){2,4}$/;  //中文2-4位汉字 
 	if (username.value.length == 0) { 
 		errname.className = "tips1";
 		errname.innerHTML = "用户名不能为空";
@@ -55,7 +86,7 @@ function checkUserName() {
 	} 
 	if (!pattern.test(username.value)) { 
 		errname.className = "tips1";
-		errname.innerHTML = "输入4-16位数字、字母、下划线";
+		errname.innerHTML = "请输入2-4位汉字";
 		return false;
 	} else { 
 		errname.innerHTML = "OK!";
@@ -83,6 +114,16 @@ function checkPassword() {
 		return true; 
 	} 
 } 
+
+// 正则限制密码输入
+var userpasswd = document.getElementById('userPasword');
+var userConPassword = document.getElementById('userConfirmPasword');
+userpasswd.onkeyup = passwordLimit;
+userConPassword.onkeyup = passwordLimit;
+function passwordLimit() {
+	this.value = this.value.replace(/[^\d]/,'');
+}
+
 // 确认密码 
 function confirmPassword() { 
 	var userpasswd = document.getElementById('userPasword'); 

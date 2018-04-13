@@ -39,18 +39,66 @@ var server = http.createServer(function (req,res) {
 		var fn = query.callback;
 		if (con.length !== 0) {
 			var result = con[con.length-1];
-			console.log(result);
 			res.writeHead(200, {'content-type': 'application/json;charset=utf-8'});
 			res.write(fn + "(" + JSON.stringify(result)+ ")")
 			res.end();
 		} else {
 			result = '';
-			res.writeHead(200, {'content-type': 'text/plain;charset=utf-8;'});
+			res.writeHead(200, {'content-type': 'application/json;charset=utf-8'});
 			res.write(fn + "(" + JSON.stringify(result) + ")")
 			res.end();
 		}
 		return;
 	}
+
+	// 获取用户信息
+	if (pathname === "/loginInfo") {
+		var ary = [];
+		var fn = query.callback;
+		for(var key in query) {
+			ary.push(key);
+		}
+		if (con.length === 0) {
+			var result = {
+				code: 1,
+				msg: "用户名不存在"
+			}
+			res.writeHead(200, {'content-type': 'application/json;charset=utf-8'});
+			res.end(fn + "(" + JSON.stringify(result) + ")");
+			return;
+		} else {
+			var flag = false;
+			var aryObj = JSON.parse(ary[1]);
+			console.log(aryObj);
+			// 判断请求数据是否存在
+			for (var i=0; i<con.length; i++) {
+				var curCon = con[i];
+				for (var key in curCon) {
+					if (aryObj["userName"] == curCon["userName"] && aryObj["userPasword"] == curCon["userPasword"]) {
+						flag = true;
+						break;
+					}
+				}
+			}
+			if (flag) {
+				result = {
+					code: 0,
+					userName: aryObj["userName"],
+					msg: "用户名存在"
+				}
+				res.writeHead(200, {'content-type': 'application/json;charset=utf-8'});
+				res.end(fn + "(" + JSON.stringify(result) + ")");
+				return;
+			}
+			result = {
+				code: 1,
+				msg: "用户名或密码错误"
+			}
+			res.writeHead(200, {'content-type': 'application/json;charset=utf-8'});
+			res.end(fn + "(" + JSON.stringify(result) + ")");
+		}
+	}
+
 	//如果请求的地址不存在，提示404不存在
 	res.writeHead(404, {'content-type': 'text/plain;charset=utf-8;'});
 	res.end("404 not found");

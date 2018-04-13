@@ -14,12 +14,12 @@
             <h2 class="form-signin-heading">登录 FireWeather</h2>
             <!-- 用户名 -->
             <span class="tips1" id="nameErr"></span>
-            <input type="text" class="form-control" id="userName" onBlur="" placeholder="请输入用户名" autofocus="" style="margin-bottom: 5px" />
+            <input type="text" class="form-control" id="userName" onBlur="checkUserName()" placeholder="请输入用户名" autofocus="" style="margin-bottom: 5px" />
             <!-- 密码 -->
             <span class="tips2" id="passwordErr"></span>
-            <input type="password" class="form-control input1" id="userPasword" onBlur="" placeholder="请输入密码" style="margin-bottom: 20px; border-radius: 4px" />
+            <input type="password" class="form-control input1" id="userPasword" onBlur="checkPassword()" placeholder="请输入密码" style="margin-bottom: 20px; border-radius: 4px" />
             <!-- 登录按钮 -->
-            <button class="btn btn-lg btn-primary btn-block" type="submit" id="loginbtn"><a href="../index.html">登 录</a></button>  
+            <button class="btn btn-lg btn-primary btn-block" type="submit" id="loginbtn"><a href="javascript:;">登 录</a></button>  
             <!-- 跳转注册页  -->
             <p><a href="form.html">没有账号？点击注册</a></p>
         </form>

@@ -55,9 +55,37 @@ $(function() {
 
 	// 帮助提示
 	$("#help").on("click",function(){
-		alert("点击搜索按钮可查询城市天气，注：搜索时请输入完整的城市名，如：北京市");
+		alert("点击搜索按钮可查询城市天气，点击个人账户可注册或登录账户");
 	})
+
+	// 获取用户名
+	getData();
 });
+
+// 获取用户数据
+function getData() {
+	// jsonp跨域提交数据
+	$.ajax({
+	    type: 'get',
+	    async: true,
+	    url: 'http://10.14.15.41:8080/getInfo',
+	    dataType: 'jsonp',
+	    jsonp: 'callback',
+	    success: function(data){
+	        if(data != ""){
+	        	$("#register").html(data.userName);
+	        	alert("欢迎您，" + data.userName + "!");
+	        	$("#register").on("click",function(e){
+	        		window.location.href = "./pages/login.html";
+	        	})
+	        } else {
+	        	$("#register").on("click",function(e){
+	        		window.location.href = "./pages/form.html";
+	        	})
+	        }
+	    }
+	});
+}
 
 // jquery圆环进度条插件
 $("#tempcircle").circleProgress({
