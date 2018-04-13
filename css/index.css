@@ -101,7 +101,7 @@ a:hover, a:active {
 	opacity: 0.1;
 	filter: alpha(opacity=10);
 }
-.header .nav li a:hover i, .header .search:hover i{
+.header .nav li a:hover i, .header .search:hover i {
 	/*过渡动画*/
 	-webkit-transition: all 0.2s linear 0s;
 	-moz-transition: all 0.2s linear 0s;
@@ -273,7 +273,8 @@ a:hover, a:active {
 .remaining .aircondition {
 	height: 350px;
 }
-/*页脚*/
+
+/*-- 页脚 --*/
 footer{
 	width: 100%;
 	height: 100px;
