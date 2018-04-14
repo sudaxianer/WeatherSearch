@@ -14,6 +14,13 @@ var server = http.createServer(function (req,res) {
 	con.length === 0 ? con = '[]' : null; //->以防文件为空con转化JSON报错
 	con = JSON.parse(con);
 
+	var conImg = null;
+	var customPath1 = "./json/imgdata.json";
+	// 获取userdata.json文件内容
+	conImg = fs.readFileSync(customPath1, "utf-8");
+	conImg.length === 0 ? conImg = '[]' : null; //->以防文件为空conImg转化JSON报错
+	conImg = JSON.parse(conImg);
+
 	// 注册用户信息
 	if (pathname === "/addInfo") {
 		var ary = [];
@@ -43,7 +50,7 @@ var server = http.createServer(function (req,res) {
 			res.write(fn + "(" + JSON.stringify(result)+ ")")
 			res.end();
 		} else {
-			result = '';
+			result = "";
 			res.writeHead(200, {'content-type': 'application/json;charset=utf-8'});
 			res.write(fn + "(" + JSON.stringify(result) + ")")
 			res.end();
@@ -51,7 +58,31 @@ var server = http.createServer(function (req,res) {
 		return;
 	}
 
-	// 获取用户信息
+	// 获取图片数据
+	if (pathname === "/getImg") {
+		var fn = query.callback;
+		if (conImg.length !== 0) {
+			var result = {
+				code: 0,
+				imgJson: conImg,
+				msg: "请求成功"
+			};
+			res.writeHead(200, {'content-type': 'application/json;charset=utf-8'});
+			res.write(fn + "(" + JSON.stringify(result)+ ")")
+			res.end();
+		} else {
+			result = {
+				code: 1,
+				msg: "无数据信息"
+			};
+			res.writeHead(200, {'content-type': 'application/json;charset=utf-8'});
+			res.write(fn + "(" + JSON.stringify(result) + ")")
+			res.end();
+		}
+		return;
+	}
+
+	// 验证用户信息
 	if (pathname === "/loginInfo") {
 		var ary = [];
 		var fn = query.callback;

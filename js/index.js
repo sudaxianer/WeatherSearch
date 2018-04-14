@@ -21,38 +21,6 @@ $(function() {
 		}
 	}) 
 
-	// 数据绑定
-	function bind(cityname) {
-		var nowTime = new Date().Format("yyyy-MM-dd");
-		$("#nowtime").html(nowTime);
-		$.ajax({
-		    type: 'get',
-		    async: true,
-		    url: 'http://restapi.amap.com/v3/place/text?keyword='+ cityname +'&citylimit=beijing&key=ddf4e80dc7363ad65c9fad7dea97a8e0',
-		    dataType: 'jsonp',
-		    jsonp: 'callback',
-		    success: function(data){
-		        var ary = data.suggestion.cities;
-		        for(var i=0, len=ary.length; i<len; i++){
-		        	var curCity = ary[i];
-		        	if (curCity.name === cityname) {
-		        		$.ajax({
-						    type: 'get',
-						    async: true,
-						    url: 'http://restapi.amap.com/v3/weather/weatherInfo?city='+ curCity.adcode +'&extensions=all&key=be650f7126669c2b186c90dbff6ad073',
-						    dataType: 'jsonp',
-						    jsonp: 'callback',
-						    success: function(data){
-						    	weather(data);
-						    }
-						})
-		        		break;
-		        	}
-		        }
-		    }
-		});
-	}
-
 	// 帮助提示
 	$("#help").on("click",function(){
 		alert("点击搜索按钮可查询城市天气，点击个人账户可注册或登录账户");
@@ -85,6 +53,124 @@ function getData() {
 	        }
 	    }
 	});
+}
+
+// 数据绑定
+function bind(cityname) {
+	var nowTime = new Date().Format("yyyy-MM-dd");
+	$("#nowtime").html(nowTime);
+	$.ajax({
+	    type: 'get',
+	    async: true,
+	    url: 'http://restapi.amap.com/v3/place/text?keyword='+ cityname +'&citylimit=beijing&key=ddf4e80dc7363ad65c9fad7dea97a8e0',
+	    dataType: 'jsonp',
+	    jsonp: 'callback',
+	    success: function(data){
+	        var ary = data.suggestion.cities;
+	        for(var i=0, len=ary.length; i<len; i++){
+	        	var curCity = ary[i];
+	        	if (curCity.name === cityname) {
+	        		$.ajax({
+					    type: 'get',
+					    async: true,
+					    url: 'http://restapi.amap.com/v3/weather/weatherInfo?city='+ curCity.adcode +'&extensions=all&key=be650f7126669c2b186c90dbff6ad073',
+					    dataType: 'jsonp',
+					    jsonp: 'callback',
+					    success: function(data){
+					    	weather(data);
+					    }
+					})
+	        		break;
+	        	}
+	        }
+	    }
+	});
+}
+
+// 图片请求与数据绑定
+~function() {
+	var _this = this;
+	$.ajax({
+		type: 'get',
+	    async: true,
+	    url: 'http://10.14.15.41:8080/getImg',
+	    dataType: 'jsonp',
+	    jsonp: 'callback',
+	    success: function(data) {
+	    	if(data && data.code === 0) {
+	    		console.log(data.imgJson);
+	    		var newsList = document.getElementById('newslist');
+	    		var imgArr = data.imgJson;
+	    		var str = "";
+	    		for (var i=0, len=imgArr.length; i<len; i++) {
+	    			var curImg = imgArr[i];
+	    			str += '<li><figure><div class="imgwrap"><img src="" trueImg="' + curImg["src"] + '"/></div><div class="newstream"><h3><a href="javascript:;">' + curImg["title"] +
+							'</a></h3><span>' + curImg["content"] + '</span></div></figure></li>'   			
+	    		}
+	    		newsList.innerHTML = str;
+				_this.imgList = document.getElementById('newslist').getElementsByTagName('img');
+				window.addEventListener("scroll", debounce(handleAllImg.bind(_this, imgList), 500, 1000));
+	    	}
+	    }
+	});
+}()
+
+// 防抖动与节流
+function debounce(func, wait, mustRun) {
+	// 定时器变量
+	var timeout;
+	var startTime = new Date();
+	return function () {
+		var curTime = new Date();
+		// 每次触发handler时先清除定时器
+		clearTimeout(timeout);
+		// 指定wait时间后触发handler
+		if (curTime - startTime >= mustRun) {
+			func();
+			startTime = curTime;
+		// 没达到触发时间，重新设定定时器
+		} else {
+			timeout = setTimeout(func, wait);
+		}
+	};
+}
+
+// 单张图片
+function lazyImg(curImg) {   // 单张图片加载
+	var oImg = new Image;
+	oImg.src = curImg.getAttribute('trueImg');
+	oImg.onload = function () {
+		curImg.src = this.src;
+		curImg.style.display = 'block';
+		oImg = null;
+	}
+	curImg.isLoad = true;
+}
+// 多张图片
+function handleAllImg(imgList) {
+	for(var i=0,len=this.imgList.length; i<len; i++){
+		var curImg = imgList[i];
+		//当前图片处理过就不需要再进行处理
+		if (curImg.isLoad) {
+			continue;
+		}
+		//只有A<B的时候再加载图片
+		var curImgPar = curImg.parentNode.parentNode;
+		var A = curImgPar.offsetHeight + curImgPar.offsetTop - 50;
+		var B = userAgent('clientHeight') + userAgent('scrollTop');
+		if (A < B) {
+			lazyImg(curImg);
+		}
+	}
+}
+
+// 计算浏览器、滚动距离
+function userAgent(attr,value) {
+	if(typeof value === 'undefined') {
+		return document.documentElement[attr]||document.body[attr];
+	}
+	document.documentElement[attr] = value;
+	document.body[attr] = value;
 }
 
 // jquery圆环进度条插件

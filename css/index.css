@@ -223,10 +223,10 @@ a:hover, a:active {
 }
 
 /*-- 其余天气信息 --*/
-.remaining {
+.remaining, .newspush {  /*加新闻推送*/
 	width: 100%;
 }
-.remaining .info {
+.remaining .info, .newspush .info{
 	margin: 0 auto;
 	width: 70.3%;
 	height: 200px;
@@ -240,7 +240,7 @@ a:hover, a:active {
 	height: 150px; 
 }
 .info div {
-	margin-left: 250px;
+	margin-left: 230px;
 	height: 100%;
 }
 .info h2{
@@ -250,7 +250,7 @@ a:hover, a:active {
 	font-weight: normal;
 	color: #FF6900;
 }
-.info p{
+.remaining .info p{
 	margin-left: 54%;
 	padding-left: 5px;
 	width: 45%;
@@ -258,10 +258,10 @@ a:hover, a:active {
 	line-height: 50px;
 	font-size: 16px;
 }
-.info p:nth-child(odd) {
+.remaining .info p:nth-child(odd) {
 	background: #eee;
 }
-.info p span{
+.remaining .info p span{
 	float: left;
 	color: #333;
 }
@@ -272,6 +272,81 @@ a:hover, a:active {
 }
 .remaining .aircondition {
 	height: 350px;
+}
+
+/*推送*/
+.newspush .newsarea {
+	height: 100%;
+	min-height: 200px;
+	border-bottom: none;
+}
+.newsarea h2 {
+	padding-bottom: 10px;
+}
+.newslist {
+	margin-bottom: 20px;
+}
+.newslist li {
+	width: 100%;
+	height: 100px;
+	margin-top: 10px;
+	padding-bottom: 10px;
+	border-bottom: 1px solid #eee;
+}
+.newslist .imgwrap {
+	float: left;
+	width: 100px;
+	height: 100px;
+	margin-left: 0;
+	margin-right: 10px;
+	background: url("../imgs/placeholder.png");
+}
+.newslist img {
+	display: none;
+	width: 100px;
+	height: 100px;
+	margin: 0 10px 0 0;
+	border: none;
+	cursor: pointer;
+}
+.newslist img[src=""] {
+	opacity: 0;
+}
+.newslist .newstream {
+	max-height: 100px;
+	margin: 0;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.newslist figure img {
+	display: block;
+}
+.newslist figure h3 {
+	font-size: 16px;
+	font-weight: normal;
+	/*实现文本溢出隐藏*/
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.newslist figure h3 a:hover {
+	text-decoration: underline;
+}
+.newslist figure span {
+	/*实现多行文本溢出最后一行显示省略号*/
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 4;
+	text-overflow: ellipsis;
+	line-height: 20px;
+	font-size: 14px;
+	color: #616161;
+}
+.newsarea .newsend {
+	text-align: center;
+	line-height: 40px;
+	font-size: 14px;
+	color: #ccc;
 }
 
 /*-- 页脚 --*/
@@ -288,7 +363,7 @@ footer span{
 
 
 /*响应式*/
-@media all and (max-width: 769px) {
+@media all and (max-width: 768px) {
 	.con {
 		width: 100%;
 	}
@@ -298,6 +373,7 @@ footer span{
 	.header .logo {
 		margin-top: 9px;
 		margin-left: 10px;
+		width: 130px;
 		height: 28px;
 		font-size: 18px;
 		background: none;
@@ -314,8 +390,9 @@ footer span{
 		width: 40px;
 	}
 	.searchinput input{
-		height: 20px;
-		margin-top: 13px; 
+		width: 130px;
+		height: 30px;
+		margin-top: 8px; 
 	}
 	.header .search img {
 		width: 20px;
@@ -339,11 +416,25 @@ footer span{
 		margin-left: 0;
 	}
 	/*info*/
-	.remaining .info {
+	.remaining .info, .newspush .info {
 		width: 100%;
 	}
-	.info p{
+	.info > img {
+		width: 150px;
+		height: 100px; 
+	}
+	.info div {
+		margin-left: 180px;
+		margin-right: 5%;
+	}
+	.remaining .info p{
 		margin-left: 0;
 		width: 100%;
+	}
+	.newsarea > img {
+		display: none;
+	}
+	.newsarea div {
+		margin-left: 5%;
 	}
 }
